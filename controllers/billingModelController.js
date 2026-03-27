@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const BillingModel = require('../models/billingModel');
 
 // Get all billing models

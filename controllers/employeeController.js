@@ -15,6 +15,16 @@ exports.createEmployee = async (req, res) => {
     const newEmployee = await employee.save();
     res.status(201).json(newEmployee);
   } catch (err) {
+    // Handle MongoDB duplicate key error
+    if (err.code === 11000) {
+      const field = Object.keys(err.keyValue)[0];
+      return res.status(400).json({ message: `An employee with this ${field} already exists. Please use a different ${field}.` });
+    }
+    // Handle validation errors
+    if (err.name === 'ValidationError') {
+      const messages = Object.values(err.errors).map(e => e.message);
+      return res.status(400).json({ message: messages.join(', ') });
+    }
     res.status(400).json({ message: err.message });
   }
 };
