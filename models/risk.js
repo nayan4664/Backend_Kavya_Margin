@@ -10,4 +10,4 @@ const riskSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Risk', riskSchema, 'ai_risks');
+module.exports = mongoose.model('Risk', riskSchema, 'ai_riskanalysis');

@@ -133,6 +133,12 @@ app.use('/api/billing-models', billingModelRoutes);
 const departmentRoutes = require('./routes/department');
 app.use('/api/departments', departmentRoutes);
 
+const rateConfigRoutes = require('./routes/rateConfig');
+app.use('/api/rate-configs', rateConfigRoutes);
+
+const marginCalculationRoutes = require('./routes/marginCalculation');
+app.use('/api/margin-calculations', marginCalculationRoutes);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
